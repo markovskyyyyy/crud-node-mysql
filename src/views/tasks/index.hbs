@@ -4,32 +4,34 @@
     <table class="table-fixed w-full">
       <thead>
         <tr class="bg-green-500 text-white">
-          <th class="w-20 py-4 ...">ID</th>
-          <th class="w-1/4 py-4 ...">Title</th>
-          <th class="w-1/2 py-4 ...">Description</th>
-          <th class="w-28 py-4 ...">Actions</th>
+
+          <th class="w-1/4 py-4 ...">Titulo</th>
+          <th class="w-1/2 py-4 ...">Descripcion</th>
+          <th class="w-28 py-4 ...">Acciones</th>
         </tr>
       </thead>
       <tbody>
         {{#each tasks}}
           <tr>
-            <td class="py-3 px-6">{{id}}</td>
-            <td class="p-3">{{title}}</td>
-            <td class="p-3 text-center">{{description}}</td>
-            <td class="p-3 flex">
-              <form action="/tasks/delete" method="POST" class="mx-2">
+
+            <td class="p-3 align-top">{{title}}</td>
+            <td class="p-3">{{description}}</td>
+            <td class="p-3 flex justify-center items-center gap-2">
+              <form action="/tasks/delete" method="POST" class="mb-0">
                 <input type="hidden" value="{{id}}" name="id" />
                 <button
-                  class="bg-red-500 text-white px-3 py-1 rounded-sm"
+                  class="bg-red-500 text-white px-4 py-2 rounded-md flex justify-center items-center"
                   type="submit"
                 >
-                  <i class="fas fa-trash"></i></button>
+                  <i class="fas fa-trash"></i>
+                </button>
               </form>
               <a
                 href="/tasks/edit/{{id}}"
-                class="bg-green-500 text-white px-3 py-1 rounded-sm"
+                class="bg-green-500 text-white px-4 py-2 rounded-md flex justify-center items-center"
               >
-                <i class="fas fa-pen"></i></a>
+                <i class="fas fa-pen"></i>
+              </a>
             </td>
           </tr>
         {{/each}}
