@@ -5,23 +5,20 @@
 
     <title>To-Do List</title>
 
-    <!-- Tailwind CSS Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css" />
 
-    <!-- Fontawesome Link -->
     <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet" />
 
   </head>
   <body class="bg-gray-200">
     <nav class="flex py-5 bg-green-500 text-white px-3 items-center justify-between">
-      <!-- Título "To-Do List" alineado a la izquierda -->
+
       <div class="flex-1 text-left">
         <a href="/" class="text-2xl font-bold whitespace-nowrap sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl">
           To-Do List
         </a>
       </div>
 
-      <!-- Botón de menú hamburguesa para pantallas pequeñas -->
       <div class="lg:hidden flex items-center">
         <button id="hamburger" class="text-white focus:outline-none">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
@@ -30,7 +27,6 @@
         </button>
       </div>
 
-      <!-- Menú en pantallas grandes -->
       <ul class="hidden lg:flex w-1/2 px-16 ml-auto flex justify-end pt-1">
         <li class="nav-item px-4">
           <a href="/tasks" class="nav-link font-semibold hover:bg-green-700 py-3 px-0 rounded-md">Mis tareas</a>
@@ -43,7 +39,6 @@
         </li>
       </ul>
 
-      <!-- Menú hamburguesa en pantallas pequeñas -->
       <ul
         id="mobile-menu"
         class="lg:hidden w-full px-5 py-5 bg-green-500 absolute top-16 right-0 transform transition-transform duration-300 translate-x-full"
