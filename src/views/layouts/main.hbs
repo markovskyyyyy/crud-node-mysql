@@ -5,20 +5,75 @@
 
     <title>To-Do List</title>
 
+    <!-- Tailwind CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css" />
 
+    <!-- Fontawesome -->
     <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet" />
-
   </head>
   <body class="bg-gray-200">
-    <nav class="flex py-5 bg-green-500 text-white px-3 items-center justify-between">
-
+    <nav class="flex py-5 bg-green-500 text-white px-5 items-center justify-between">
+      <!-- Título de la aplicación -->
       <div class="flex-1 text-left">
         <a href="/" class="text-2xl font-bold whitespace-nowrap sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl">
           To-Do List
         </a>
       </div>
 
+      <!-- Menú para dispositivos grandes -->
+      <ul class="hidden lg:flex w-1/2 px-0 ml-auto flex justify-end pt-1">
+        {{#if name}}
+          <!-- Usuario logueado -->
+          <li class="nav-item">
+            <p class="font-semibold px-4">Hola, {{name}}.</p>
+          </li>
+          <li class="nav-item">
+            <a
+              href="/tasks"
+              class="nav-link font-semibold bg-green-500 hover:bg-green-700 text-white py-3 px-4 rounded-md transition"
+            >
+              Mis tareas
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="/create"
+              class="nav-link font-semibold bg-green-500 hover:bg-green-700 text-white py-3 px-4 rounded-md transition"
+            >
+              Agregar Tarea
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="/logout"
+              class="nav-link font-semibold bg-red-500 hover:bg-red-700 text-white py-3 px-4 rounded-md transition"
+            >
+              Cerrar Sesión
+            </a>
+          </li>
+        {{else}}
+          <!-- Usuario no logueado -->
+          <li class="nav-item">
+            <a
+              href="/login"
+              class="nav-link font-semibold bg-green-500 hover:bg-green-700 text-white py-3 px-2 rounded-md transition"
+            >
+              Iniciar Sesión
+            </a>
+          </li>
+          <li>
+            <a
+              href="/register"
+              class="nav-link font-semibold bg-green-500 hover:bg-green-700 text-white py-3 px-2 rounded-md transition"
+            >
+              Resgistrarse
+            </a>
+          </li>
+        {{/if}}
+
+      </ul>
+
+      <!-- Menú para dispositivos móviles -->
       <div class="lg:hidden flex items-center">
         <button id="hamburger" class="text-white focus:outline-none">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
@@ -26,46 +81,68 @@
           </svg>
         </button>
       </div>
-
-      <ul class="hidden lg:flex w-1/2 px-16 ml-auto flex justify-end pt-1">
-        <li class="nav-item px-4">
-          <a href="/tasks" class="nav-link font-semibold hover:bg-green-700 py-3 px-0 rounded-md">Mis tareas</a>
-        </li>
-        <li class="nav-item px-4">
-          <a
-            href="/create"
-            class="nav-link font-semibold border-2 border-white hover:text-green-700 hover:bg-white py-3 px-4 rounded-md"
-          >Agregar Tarea</a>
-        </li>
-      </ul>
-
       <ul
         id="mobile-menu"
         class="lg:hidden w-full px-5 py-5 bg-green-500 absolute top-16 right-0 transform transition-transform duration-300 translate-x-full"
       >
-        <li class="nav-item px-4 py-2">
-          <a
-            href="/tasks"
-            class="nav-link font-semibold text-white bg-green-600 hover:bg-green-700 rounded-md block py-3 px-6 transition duration-200"
-          >
-            Mis tareas
-          </a>
-        </li>
-        <li class="nav-item px-4 py-2">
-          <a
-            href="/create"
-            class="nav-link font-semibold text-white bg-green-600 hover:bg-green-700 rounded-md block py-3 px-6 transition duration-200"
-          >
-            Agregar Tarea
-          </a>
-        </li>
+        {{#if name}}
+          <!-- Usuario logueado en móvil -->
+          <li class="nav-item px-4 py-2">
+            <p class="font-semibold text-white">Hola, {{name}}.</p>
+          </li>
+          <li class="nav-item px-4 py-2">
+            <a
+              href="/tasks"
+              class="nav-link font-semibold text-white bg-green-600 hover:bg-green-700 rounded-md block py-3 px-6 transition duration-200"
+            >
+              Mis tareas
+            </a>
+          </li>
+          <li class="nav-item px-4 py-2">
+            <a
+              href="/create"
+              class="nav-link font-semibold text-white bg-green-600 hover:bg-green-700 rounded-md block py-3 px-6 transition duration-200"
+            >
+              Agregar Tarea
+            </a>
+          </li>
+          <li class="nav-item px-4 py-2">
+            <a
+              href="/logout"
+              class="nav-link font-semibold text-white bg-red-500 hover:bg-red-700 rounded-md block py-3 px-6 transition duration-200"
+            >
+              Cerrar Sesión
+            </a>
+          </li>
+        {{else}}
+          <!-- Usuario no logueado en móvil -->
+          <li class="nav-item px-4 py-2">
+            <a
+              href="/login"
+              class="nav-link font-semibold text-white bg-green-600 hover:bg-green-700 rounded-md block py-3 px-6 transition duration-200"
+            >
+              Iniciar Sesión
+            </a>
+          </li>
+          <li class="nav-item px-4 py-2">
+            <a
+              href="/register"
+              class="nav-link font-semibold text-white bg-green-600 hover:bg-green-700 rounded-md block py-3 px-6 transition duration-200"
+            >
+              Resgistrarse
+            </a>
+          </li>
+        {{/if}}
+
       </ul>
     </nav>
+
+    {{{body}}}
+
+    <script>
+      const hamburger = document.getElementById("hamburger"); const mobileMenu = document.getElementById("mobile-menu");
+      hamburger.addEventListener("click", () => { mobileMenu.classList.toggle("translate-x-full");
+      mobileMenu.classList.toggle("translate-x-0"); });
+    </script>
   </body>
-  {{{body}}}
-  <script>
-    const hamburger = document.getElementById('hamburger'); const mobileMenu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('translate-x-full');
-    mobileMenu.classList.toggle('translate-x-0'); });
-  </script>
 </html>
