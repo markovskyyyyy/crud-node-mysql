@@ -1,7 +1,7 @@
 const express = require("express");
 const { engine } = require("express-handlebars");
 const myconnection = require("express-myconnection");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const tasksRoutes = require("./routes/taskRoutes/tasks");
@@ -34,7 +34,7 @@ app.use(
   myconnection(mysql, {
     host: "localhost",
     user: "root",
-    password: "",
+    password: "1999",
     port: 3306,
     database: "crudnodejs",
   })
